@@ -5,9 +5,13 @@ int main() {
     int N = 0 ;
     scanf( "%d", &N ) ;
 
+    if( N >= 0 ) {
     for( int i = 0 ; N > i ; i++ ) {
         printf( "Hello Loop!\n" ) ;
     }//end for
-    
+    }else {
+        printf( "Error" ) ;
+    }//end if
+
     return 0 ;
 }//end function 
