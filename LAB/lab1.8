@@ -1,1 +1,35 @@
+#include <stdio.h>
 
+int main() {
+
+    int dayCode, hour = 0 ;
+
+    if( scanf( "%d %d", &dayCode, &hour ) != 2 ) {
+        return 1 ;
+    }//end if
+
+    switch( dayCode ) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+            if( hour >= 8 && hour <= 17 ) {  //ต้องใช้ && เพราะทั้งคู่
+                printf( "System Running (Workday)" ) ;
+            }else {
+                printf( "System Idle (Off-hours)" ) ;
+            }//end if
+            break ;
+
+        case 6:
+        case 7:
+            printf( "Weekend Relax Mode" ) ;
+            break ;
+
+        default:
+            printf( "Invalid Day Code" ) ;
+            break ;
+    }//end switch
+
+    return 0 ;
+}//end function
