@@ -1,1 +1,35 @@
+#include <stdio.h>
 
+int main() {
+    
+    int monthCount = 0 ;
+    float principal, monthlyPayment, interest = 0.0 ;
+    const float INTEREST_RATE = 0.01 ;
+    const float PENALTY = 10.0 ;
+    
+    if( scanf( "%f %f", &principal, &monthlyPayment ) != 2 ) {
+        return 1 ;
+    }//end if
+
+   
+    while( principal > 0 ) {
+        interest = principal * INTEREST_RATE ;
+        principal = principal + interest ;
+        if( monthlyPayment < interest ) {
+            principal = principal + PENALTY ;
+        }//end if
+
+        principal = principal - monthlyPayment ;
+        if( monthCount > 10 ){
+            printf( "Loan settled in 10+ months." ) ;
+            return 0 ;
+        }//end if
+
+        printf( "Month %d: Remaining %.2f\n", monthCount+1, principal ) ;
+        monthCount++ ;
+    }//end while
+
+    printf( "Load Settled in %d months.\n", monthCount ) ;
+
+    return 0 ;
+}//end function
