@@ -1,1 +1,20 @@
+#include <stdio.h>
 
+int main() {
+
+    int N = 0 ;
+
+    if( scanf( "%d", &N ) != 1 ) {
+        return 1 ;
+    }//end if
+
+    if( N >= 1 ) {
+        for( int i = 0 ; i < N ; i++ ) {
+            printf( "[%d]Hello Loop!\n", i+1 ) ;
+        }//end for
+    }else {
+        printf( "Error!" ) ;
+    }//end if
+
+    return 0 ;
+}//end function
