@@ -1,1 +1,26 @@
+#include <stdio.h>
 
+void increase_value( int * ) ;
+
+int main() {
+
+    int data = 0 ;
+
+    printf( "Enter initial integer value: " ) ;
+    if( scanf( "%d", &data ) != 1 ) {
+        return 1 ;
+    }//end if
+
+    printf( "\n---POINTER MODIFICATION REPORT---\n" ) ;
+    printf( "%5s Value Before function call: %d\n", "1.", data ) ;
+
+    increase_value( &data ) ;
+
+    printf( "%5s Value After function call: %d\n", "2.", data ) ;
+
+    return 0 ;
+}//end function
+
+void increase_value( int *number_prt ) {
+    *number_prt = *number_prt + 10 ;
+}//end function
