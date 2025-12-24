@@ -1,1 +1,35 @@
+#include <stdio.h>
+#include <string.h>
 
+void countV(char *str , int *nub ) ;
+
+int main() {
+    int n = 100 ;
+    char sen[n] ;
+    int count = 0 ;
+    printf( "Enter word " ) ;
+    if( fgets( sen , n , stdin ) == NULL ) {
+        return 1 ;
+    }
+
+    sen[strcspn(sen , "\n" )] = '\0' ;
+    
+    countV( sen , &count ) ; 
+
+    printf( "Input Sentence \"%s\"\n"  , sen ) ;
+    printf (" vowel count: %d\n" , count ) ;
+    return 0 ;
+}
+
+void countV(char *str , int *nub) {
+    int i = 0 ;
+    int n = 0 ;
+    while ( str[i] != '\0' ) {
+        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U' ) {
+            (*nub) += 1 ;
+        }
+
+        i++ ;
+    }
+}
+    
