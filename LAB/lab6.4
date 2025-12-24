@@ -1,1 +1,28 @@
+#include <stdio.h>
 
+void calpulsx( int ATAAT , int BARTA , int *PLUS , int *AMURO ) ;
+int PRINT( int A , int B , int SuMp ,int SuMx ) ;
+
+int main() {
+    int MYboyA , SHINB ;
+    int SUMMAP , SUMMAX ;
+    
+    printf( "Enter Num A and B\n" ) ;
+    scanf( "%d %d" , &MYboyA , &SHINB ) ; 
+
+    calpulsx( MYboyA , SHINB , &SUMMAP , &SUMMAX ) ;
+}
+
+void calpulsx( int ATAAT , int BARTA , int *PLUS , int *AMURO ) {
+    *PLUS = ATAAT + BARTA ;
+    *AMURO = ATAAT * BARTA ;
+
+    PRINT ( ATAAT,BARTA,*PLUS,*AMURO ) ;
+}
+
+int PRINT( int A , int B , int SuMp ,int SuMx ) {
+    printf("INPUT Value A = %d B = %d \n" , A , B ) ;
+    printf( "Result sum : A + B = %d\n" , SuMp ) ;
+    printf( "Result Product A x B = %d" , SuMx ) ;
+    return 0 ;
+}
