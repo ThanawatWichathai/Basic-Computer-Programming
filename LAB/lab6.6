@@ -1,1 +1,47 @@
+#include <stdio.h>
 
+int cal( int *trans , int SIZE , int *sta ) ;
+
+int main(){
+    int N = 5 ;
+    int i ;
+    int status ;
+    int balance ;
+    int transis[N] ;
+
+    printf( "Enter transistion (income+ , expense -) \n" ) ;
+    for ( i = 0 ; i < N ; i++ ) {
+        printf( "transaction %d: " , i+1 ) ;
+        scanf( "%d" , &transis[i] ) ;
+    }
+
+    balance = cal( transis , N , &status ) ;
+
+    printf( "transistion: " ) ;
+    for ( i = 0 ; i < N ; i ++ ) {
+        printf( "%d " , transis[i] ) ;
+    }
+    printf( "\nBalance: %d\n" , balance ) ;
+    printf( "status: " ) ;
+    if( status == 1 ){
+        printf( "Profit" ) ;
+    }else {
+        printf( "Loss" ) ;
+    }
+
+    return 0 ;
+}
+
+int cal( int *trans , int SIZE , int *sta ) {
+    int balance ;
+    int i ;
+    for( i = 0 ; i < SIZE ; i++ ){
+        balance += trans[i] ;
+    }
+    if(balance >= 0){
+        *sta = 1 ;
+    }else {
+        *sta = 0 ;
+    }
+    return balance ;
+}
