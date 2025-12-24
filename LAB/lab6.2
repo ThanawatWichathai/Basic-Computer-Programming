@@ -1,1 +1,28 @@
+#include <stdio.h>
 
+void swap_value(int *num1, int *num2) ;
+
+int main() {
+    int data[2] , i  ;
+   for( i = 0 ; i < 2 ; i++ ) { 
+        printf("Enter value for num%d: " , i+1) ;
+        scanf("%d",&data[i] ) ;
+   }
+   
+    
+    printf( "\n--- SWAPaPING REPORT ---\n" ) ;
+    printf( "Before swap - num1 : %d , num2 : %d\n" , data[0] , data[1] ) ;
+
+    swap_value( &data[0] , &data[1] ) ;
+    
+    printf( "After swap - num1 : %d , num2 : %d " , data[0] , data[1] ) ;
+    
+    return 0 ;
+
+}
+
+void swap_value(int *num1, int *num2){
+    *num1 = *num1 + *num2 ;
+    *num2 = *num1 - *num2 ;
+    *num1 = *num1 - *num2 ; 
+}
