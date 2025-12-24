@@ -1,1 +1,26 @@
+#include <stdio.h>
 
+#define SIZE 3 
+
+int main() {
+    int num[SIZE] , *point , i ;
+
+    printf( "Enter %d number for array\n" , SIZE ) ;
+    for ( i = 0 ; i < SIZE ; i ++ ) {
+        printf( "num %d:" , i ) ;
+        if(scanf( "%d" , &num[i] ) != 1 ) {
+            return 1 ;
+        } 
+    }
+
+    point = num ;
+
+    printf( "--- ARRAY AND POINTER ARRAY\n" ) ;
+    printf( "INDEX | Value(direct) | value(pointer) | Address\n" ) ;
+
+    for( i = 0 ; i < SIZE ; i ++ ) {
+        printf( "%d | %d | %d | %p \n" , i , num[i] , *(point+i) , point+i ) ;
+    }
+
+    return 0 ;
+}
