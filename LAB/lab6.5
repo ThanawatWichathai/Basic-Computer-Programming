@@ -1,35 +1,44 @@
 #include <stdio.h>
 #include <string.h>
 
-void countV(char *str , int *nub ) ;
+#define MAXSIZE 100 
+
+int count_vowels_with_pointer( char *str ) ;
 
 int main() {
-    int n = 100 ;
-    char sen[n] ;
-    int count = 0 ;
-    printf( "Enter word " ) ;
-    if( fgets( sen , n , stdin ) == NULL ) {
+
+    char sentence[ MAXSIZE] ;
+    int vowel_count = 0 ;
+    //char *char_ptr ;
+
+    printf( "Enter a sentense: " ) ;
+    if( fgets( sentence, MAXSIZE, stdin ) == NULL ) {
         return 1 ;
-    }
+    }//end if
 
-    sen[strcspn(sen , "\n" )] = '\0' ;
-    
-    countV( sen , &count ) ; 
+    sentence[ strcspn( sentence, "\n" ) ] = '\0' ;
 
-    printf( "Input Sentence \"%s\"\n"  , sen ) ;
-    printf (" vowel count: %d\n" , count ) ;
+    char *char_ptr = sentence ;
+
+    vowel_count = count_vowels_with_pointer( char_ptr ) ;
+
+    printf( "\n---STRING ANALYSIS RERORT---\n" ) ;
+    printf( "Input String: \"%s\"\n", sentence ) ;
+    printf( "Total Vowel Count: %d\n", vowel_count ) ;
+
     return 0 ;
-}
+}//end function
 
-void countV(char *str , int *nub) {
-    int i = 0 ;
-    int n = 0 ;
-    while ( str[i] != '\0' ) {
-        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' || str[i] == 'A' || str[i] == 'E' || str[i] == 'I' || str[i] == 'O' || str[i] == 'U' ) {
-            (*nub) += 1 ;
-        }
+int count_vowels_with_pointer( char *str ) {
+    int countV, i = 0 ;
 
+    while( *(str + i) != '\0' ) {
+        if( *(str + i) =='a' || *(str + i) == 'e' || *(str + i) == 'i' || *(str + i) == 'o' || *(str + i) == 'u' || 
+            *(str + i) == 'A' || *(str + i) == 'E' || *(str + i) == 'I' || *(str + i) == 'O'|| *(str + i) == 'U' ) {
+            countV++ ;
+        }//end if
         i++ ;
-    }
-}
-    
+    }//end while
+
+    return countV ;
+}//end function
