@@ -3,24 +3,34 @@
 #define SIZE 3 
 
 int main() {
-    int num[SIZE] , *point , i ;
 
-    printf( "Enter %d number for array\n" , SIZE ) ;
-    for ( i = 0 ; i < SIZE ; i ++ ) {
-        printf( "num %d:" , i ) ;
-        if(scanf( "%d" , &num[i] ) != 1 ) {
+    int data[ SIZE] ;
+    int *ptr ;
+    int i = 0 ;
+
+    printf( "Enter %d integer elements for the array: \n", SIZE ) ;
+    for( i = 0 ; i < SIZE; i++ ) {
+        printf( "Element%d: ", i ) ;
+        if( scanf( "%d", &data[i] ) != 1 ) {
             return 1 ;
-        } 
-    }
+        }//end if
+    }//end for
 
-    point = num ;
+    ptr = &data[0] ;
 
-    printf( "--- ARRAY AND POINTER ARRAY\n" ) ;
-    printf( "INDEX | Value(direct) | value(pointer) | Address\n" ) ;
+    printf( "\n---ARRAY AND POINTER REPORT---\n" ) ;
+    printf( "Index | Value (Direct) | Value (via Pointer) | Address\n" ) ;
+    printf( "------------------------------------------------------\n" ) ;
 
-    for( i = 0 ; i < SIZE ; i ++ ) {
-        printf( "%d | %d | %d | %p \n" , i , num[i] , *(point+i) , point+i ) ;
-    }
+    for( i = 0 ; i < SIZE ; i++ ) {
+
+        printf( "%d | %d | %d | %p\n",
+                i,
+                data[i],
+                *( ptr + i ),
+                ( ptr + i )
+        ) ;
+    }//end for
 
     return 0 ;
-}
+}//end function
