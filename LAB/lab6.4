@@ -1,28 +1,36 @@
 #include <stdio.h>
 
-void calpulsx( int ATAAT , int BARTA , int *PLUS , int *AMURO ) ;
-int PRINT( int A , int B , int SuMp ,int SuMx ) ;
+void calculate_sum_product( int num1, int num2, int *sum_ptr, int *prod_ptr ) ;
 
 int main() {
-    int MYboyA , SHINB ;
-    int SUMMAP , SUMMAX ;
-    
-    printf( "Enter Num A and B\n" ) ;
-    scanf( "%d %d" , &MYboyA , &SHINB ) ; 
 
-    calpulsx( MYboyA , SHINB , &SUMMAP , &SUMMAX ) ;
-}
+    int val_A, val_B = 0 ; 
+    int result_sum = 0 ;
+    int result_product = 0 ;
 
-void calpulsx( int ATAAT , int BARTA , int *PLUS , int *AMURO ) {
-    *PLUS = ATAAT + BARTA ;
-    *AMURO = ATAAT * BARTA ;
+    printf( "Enter first integer ( Val A ): " ) ;
+    if( scanf( "%d", &val_A ) != 1 ) {
+        return 1 ;
+    }//end if
 
-    PRINT ( ATAAT,BARTA,*PLUS,*AMURO ) ;
-}
+    printf( "Enter second integer ( Val B ):" ) ;
+    if( scanf( "%d", &val_B ) != 1 ) {
+        return 1 ;
+    }//end if
 
-int PRINT( int A , int B , int SuMp ,int SuMx ) {
-    printf("INPUT Value A = %d B = %d \n" , A , B ) ;
-    printf( "Result sum : A + B = %d\n" , SuMp ) ;
-    printf( "Result Product A x B = %d" , SuMx ) ;
+    calculate_sum_product( val_A, val_B, &result_sum, &result_product ) ; // put & when use sumation
+
+    printf( "\n---CALCULATION REPORT---\n" ) ;
+    printf( "Input Values: A = %d, B = %d\n", val_A, val_B ) ;
+    printf( "---------------------------------\n" ) ;
+    printf( "Result Sum (A + B): %d\n", result_sum ) ;
+    printf( "Result Product (A * B): %d\n", result_product ) ;
+
     return 0 ;
-}
+}//end function
+
+void calculate_sum_product( int num1, int num2, int *sum_ptr, int *prod_ptr ) {
+    *sum_ptr = num1 + num2 ;
+    *prod_ptr = num1 * num2 ; 
+
+}//end function
