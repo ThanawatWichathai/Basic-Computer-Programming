@@ -1,47 +1,56 @@
 #include <stdio.h>
 
-int cal( int *trans , int SIZE , int *sta ) ;
+#define SIZE 5
 
-int main(){
-    int N = 5 ;
+int calculate_net_balance( int *trans_array, int size, int *status_ptr ) ;
+
+int main() {
+
+    int transaction[ SIZE ] ;
+    int net_balance ;
+    int finance_status ;
     int i ;
-    int status ;
-    int balance ;
-    int transis[N] ;
 
-    printf( "Enter transistion (income+ , expense -) \n" ) ;
-    for ( i = 0 ; i < N ; i++ ) {
-        printf( "transaction %d: " , i+1 ) ;
-        scanf( "%d" , &transis[i] ) ;
-    }
+    printf( "Enter %d transantions ( Income +, Expense - ): \n", SIZE ) ;
+    for( i = 0 ; i < SIZE ; i++ ) {
+        printf( "Transaction %d: ", i + 1 ) ;
+        if( scanf( "%d", &transaction[i] ) != 1 ) {
+            return 1 ;
+        }//end if
+    }//end for
 
-    balance = cal( transis , N , &status ) ;
+    net_balance = calculate_net_balance( transaction, SIZE, &finance_status ) ;
 
-    printf( "transistion: " ) ;
-    for ( i = 0 ; i < N ; i ++ ) {
-        printf( "%d " , transis[i] ) ;
-    }
-    printf( "\nBalance: %d\n" , balance ) ;
-    printf( "status: " ) ;
-    if( status == 1 ){
-        printf( "Profit" ) ;
+    printf( "\n---RESONAL FINANCIAL REPORT---\n" ) ;
+    printf( "Transantion Recorded: " ) ;
+    for( i = 0 ; i < SIZE ; i++ ) {
+        printf( "%d, ", transaction[i] ) ;
+    }//end for
+
+    printf( "\n" ) ;
+    printf( "Net Balance: %d\n", net_balance ) ;
+    printf( "Status: " ) ;
+
+    if( finance_status == 1 ) {
+        printf( "Profit!" ) ;
     }else {
-        printf( "Loss" ) ;
-    }
+        printf( "Loss!" ) ;
+    }//end if
 
     return 0 ;
-}
+}//end function
 
-int cal( int *trans , int SIZE , int *sta ) {
-    int balance ;
-    int i ;
-    for( i = 0 ; i < SIZE ; i++ ){
-        balance += trans[i] ;
-    }
-    if(balance >= 0){
-        *sta = 1 ;
+int calculate_net_balance( int *trans_array, int size, int *status_ptr ) {
+    int Net_Balance = 0 ; 
+    for( int i = 0 ; i < size ; i++ ) {
+        Net_Balance += trans_array[i] ; 
+    }//end for
+
+    if( Net_Balance >= 0 ) {
+        *status_ptr = 1 ;
     }else {
-        *sta = 0 ;
-    }
-    return balance ;
-}
+        *status_ptr = 0 ;
+    }//end if
+
+    return Net_Balance ;
+}//end function
