@@ -1,1 +1,35 @@
+#include <stdio.h>
 
+float calculate_win_odds( int outs ) ;
+
+int main() {
+
+    int card_outs ;
+    float win_probability ;
+
+    printf( "Enter a Card Outs: " ) ;
+    if( scanf( "%d", &card_outs ) != 1 ) {
+        return 1 ;
+    }//end function
+
+    win_probability = calculate_win_odds( card_outs ) ;
+
+    printf( "\n--- POKER PROBABILITY REPORT ( 2 CARDS REMAINING ) ---\n" ) ;
+    printf( "Calculate Outs: %d\n", card_outs ) ;
+    printf( "Win Probability (Odds x 4): %.2f%%\n", win_probability ) ;
+
+    printf( "Assessment: " ) ;
+
+    if( win_probability >= 30 ) {
+        printf( "HIGH WIN PROBABILITY" ) ;
+    }else {
+        printf( "LOW WIN PROBABILITY" ) ;
+    }//end if
+
+    return 0 ;
+}//end function
+
+float calculate_win_odds( int outs ) {
+    outs = outs * 4 ;
+    return outs ;
+}//end function
