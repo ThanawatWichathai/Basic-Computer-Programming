@@ -1,1 +1,74 @@
+#include <stdio.h>
 
+#define SIZE 5
+
+int find_and_update( int *arr_ptr, int size, int search_value, int new_value ) ;
+void print_array( int arr[], int size ) ;
+
+int main() {
+
+    int numbers[ SIZE ] ;
+    int search_val ;
+    int new_val ;
+    int status ;
+    int i ;
+
+    printf( "Enter %d integer elements of array: \n", SIZE ) ;
+    for( i = 0 ; i < SIZE ; i++ ) {
+        printf( "Element %d: ", i + 1 ) ;
+        if( scanf( "%d", &numbers[i] ) != 1 ) {
+            return 1 ;
+        }//end if
+    }//end for
+
+    printf( "\nEnter Value to search ( Search Value ): " ) ;
+    if( scanf( "%d", &search_val ) != 1 ) {
+        return 1 ;
+    }//end if
+
+    printf( "Enter New Value to replace it with ( New Value ): " ) ;
+    if( scanf( "%d", &new_val ) != 1 ) {
+        return 1 ;
+    }//end if
+
+    printf( "\n--- ARRAY UPDATE REPORT ---\n" ) ;
+    printf( "Array Before Update: " ) ;
+    print_array( numbers, SIZE ) ;
+
+    status = find_and_update( numbers, SIZE, search_val, new_val ) ;
+
+    printf( "Array After Update: " ) ;
+    print_array( numbers, SIZE ) ;
+
+    printf( "Status: " ) ;
+    if( status == 1 ) {
+        printf( "Update Successful" ) ;
+    }else {
+        printf( "Update Failed" ) ;
+    }//end if
+
+    return 0 ;
+}//end function
+
+int find_and_update( int *arr_ptr, int size, int search_value, int new_value ) {
+    int i ;
+    
+    for( i = 0 ; i < size ; i++ ) {
+        if( *(arr_ptr + i) == search_value ) { // *(arr_ptr + i) == arr_ptr[i] , -- pointer cell 0 and increase value.. 
+            *(arr_ptr + i) = new_value ; // = assign , == compare
+            return 1 ;
+        }//end if
+    }//end for
+
+    return 0 ;
+}//end function
+
+void print_array( int arr[], int size ) { //DISPLAY number in Array.
+    int i ;
+    for( i = 0 ; i < size ; i++ ) {
+        printf( "%d ", arr[i] ) ;
+    }//end for
+
+    printf( "\n" ) ;
+
+}//end function
