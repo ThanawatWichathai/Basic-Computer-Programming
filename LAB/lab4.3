@@ -1,1 +1,31 @@
+#include <stdio.h>
 
+int main() {
+    int Temp_perdays[7] ;
+    int i , Max_temp = 0 ;
+
+    for( i = 0 ; i < 7 ; i ++ ) {
+        printf( "Enter temperature for Day %d: " , i + 1 ) ;
+        if( scanf( "%d" , &Temp_perdays[i] ) != 1 ) {
+            return 1 ;
+        }//end if
+
+        if( Temp_perdays[i] > Max_temp ) {
+            Max_temp = Temp_perdays[i] ;
+        }//end if
+    }//end for
+
+    printf( "\n--- DAILY TEMPERATURE REPORT ---\n" ) ;
+    printf( "Recorded Temperatures (C): " ) ;
+    for( i = 0 ; i < 7 ; i ++ ) {
+        printf( "%3d" , Temp_perdays[i] ) ;
+    }//end for
+
+    printf( "\nMaximum Temperature Found: %d C\n", Max_temp ) ;
+    if( Max_temp >= 35 ) {
+        printf( "Weather is HOT!" ) ;
+    }else {
+        printf( "Weather is MODERATE." ) ;
+    }//end if
+    return 0 ;
+}//end function
