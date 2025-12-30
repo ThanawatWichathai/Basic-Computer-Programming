@@ -1,1 +1,27 @@
+#include <stdio.h>
 
+int calculate_area( int lenght , int width ) ;
+
+int main () {
+    
+    int a , in_l ,in_w ;
+
+    printf( "Enter lenght and width: " ) ;
+    if( scanf( "%d %d" , &in_l , &in_w ) != 2 ) {
+        return 1 ;
+    }//end if
+
+    a = calculate_area( in_l , in_w ) ;
+    printf( "\n---RECTANGLE AREA REPORT---\n" ) ;
+    printf( "Lenght: %d\n" , in_l ) ;
+    printf( "Width: %d\n" , in_w ) ;
+    printf( "Calculated Area: %d\n" , a ) ;
+
+    return 0 ;
+}//end function
+
+int calculate_area( int lenght , int width ) {
+    int area ;
+    area = lenght * width ;
+    return area ;
+}//end function
