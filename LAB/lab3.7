@@ -1,1 +1,40 @@
+#include <stdio.h>
 
+struct SalessRecord {
+    char name[50] ;
+    float target ;
+    float actual ;
+} ;
+
+int main() {
+    int N ;
+    float comission  = 0.0 ;
+    float Megacomisson = 0.0 ;
+    if( scanf( "%d" , &N ) != 1 ) {
+        return 1 ;
+    }//end if
+
+    struct SalessRecord Note[N] ;
+
+    for( int i = 0 ; i < N ; i ++ ) {
+        
+        if( scanf( "%f %f %s" , &Note[i].target , &Note[i].actual , Note[i].name ) != 3) {
+            return 1 ;
+        }//end if
+
+        comission = Note[i].actual *0.10 ;
+        if( Note[i].actual >= (Note[i].target*1.20) ) {
+            comission += 200 ;
+        }else if( Note[i].actual >= Note[i].target ) {
+            comission += 50 ;
+        }else if( Note[i].actual < Note[i].target * 0.9 ) {
+            comission -= 100 ;
+        }//end if
+
+        Megacomisson += comission ;
+    }//end for
+
+    printf( "Grand Total  Commission: %.2f\n" , Megacomisson ) ;
+
+    return 0 ;
+}//end function
